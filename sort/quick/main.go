@@ -23,10 +23,10 @@ func quickSort(arr []int) []int {
 	}
 
 	// 随机去一个中间值
-	mideItem := arr[rand.Intn(len(arr))]
-	lowPart := make([]int, 0, len(arr))
-	midemPart := make([]int, 0, len(arr))
-	highPart := make([]int, 0, len(arr))
+	mideItem 	:= arr[rand.Intn(len(arr))]
+	lowPart 	:= make([]int, 0, len(arr))
+	midemPart 	:= make([]int, 0, len(arr))
+	highPart 	:= make([]int, 0, len(arr))
 
 	//遍历arr 将不同的部分放到不同的区域
 	for _, item := range arr {
@@ -39,11 +39,11 @@ func quickSort(arr []int) []int {
 		}
 	}
 
-	lowPart = quickSort(lowPart)
-	highPart = quickSort(highPart)
+	lowPart 	= quickSort(lowPart)
+	highPart 	= quickSort(highPart)
 
-	lowPart = append(lowPart, midemPart...)
-	lowPart = append(lowPart, highPart...)
+	lowPart 	= append(lowPart, midemPart...)
+	lowPart 	= append(lowPart, highPart...)
 
 	return lowPart
 }
