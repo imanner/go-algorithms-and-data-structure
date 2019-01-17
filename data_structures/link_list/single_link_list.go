@@ -37,6 +37,29 @@ func (ll *single_link_list)addAtEnd(val int){
 	cur.next = n
 }
 
+func (ll *single_link_list)delAtEnd() int {
+	res := -1
+
+	if ll.head == nil {
+		return res
+	}
+
+	if ll.head.next == nil {
+		res = ll.head.value
+		ll.head.value = 0
+		return res
+	}
+
+	cur := ll.head
+
+	for ; cur.next.next != nil; cur = cur.next {
+	}
+
+	res = cur.next.value
+	cur.next = nil
+	return res
+}
+
 //遍历输出单链表的所有节点
 func (ll *single_link_list)ergodic(){
 	cur := ll.head
@@ -61,6 +84,10 @@ func main() {
 	ll.addAtEnd(4)
 	ll.addAtEnd(5)
 	ll.addAtEnd(6)
+
+	ll.delAtEnd()
+	ll.delAtEnd()
+	ll.delAtEnd()
 
 	ll.ergodic()
 }
