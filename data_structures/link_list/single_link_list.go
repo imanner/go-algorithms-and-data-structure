@@ -60,18 +60,32 @@ func (ll *single_link_list)delAtEnd() int {
 	return res
 }
 
-//遍历输出单链表的所有节点
-func (ll *single_link_list)ergodic(){
-	cur := ll.head
+func (ll *single_link_list) count() int {
+	res := 0
 
-	for cur.next != nil {
-
-		log.Println(cur.value)
-
-		cur = cur.next
+	if ll.head == nil {
+		return res
 	}
 
-	log.Println(cur.value)
+	cur := createNewNode(0)
+	cur.next = ll.head
+
+	for ; cur.next != nil; cur = cur.next {
+		res += 1
+	}
+
+	return res
+}
+
+//遍历输出单链表的所有节点
+func (ll *single_link_list)ergodic(){
+	cur := createNewNode(0)
+	cur.next = ll.head
+
+	for cur.next != nil {
+		cur = cur.next
+		log.Println(cur.value)
+	}
 }
 
 func main() {
@@ -90,4 +104,5 @@ func main() {
 	ll.delAtEnd()
 
 	ll.ergodic()
+	log.Println(ll.count())
 }
