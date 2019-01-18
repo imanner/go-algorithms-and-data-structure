@@ -4,8 +4,8 @@ import "log"
 
 // 节点，包含两部分
 type node struct {
-	value int	//值
-	next *node	//指向下一个节点的指针
+	value int   //值
+	next  *node //指向下一个节点的指针
 }
 
 type single_link_list struct {
@@ -18,7 +18,7 @@ func createNewNode(val int) *node {
 }
 
 //添加节点
-func (ll *single_link_list)addAtEnd(val int){
+func (ll *single_link_list) addAtEnd(val int) {
 	// 首先创建一个新的节点
 	n := createNewNode(val)
 
@@ -37,7 +37,7 @@ func (ll *single_link_list)addAtEnd(val int){
 	cur.next = n
 }
 
-func (ll *single_link_list)delAtEnd() int {
+func (ll *single_link_list) delAtEnd() int {
 	res := -1
 
 	if ll.head == nil {
@@ -77,8 +77,24 @@ func (ll *single_link_list) count() int {
 	return res
 }
 
+// 翻转链表
+func (ll *single_link_list) reverse() {
+	var prev, next *node
+	cur := ll.head
+
+	for cur != nil {
+		next = cur.next
+		cur.next = prev
+		prev = cur
+		cur = next
+	}
+
+	ll.head = prev
+}
+
+
 //遍历输出单链表的所有节点
-func (ll *single_link_list)ergodic(){
+func (ll *single_link_list) ergodic() {
 	cur := createNewNode(0)
 	cur.next = ll.head
 
@@ -99,10 +115,13 @@ func main() {
 	ll.addAtEnd(5)
 	ll.addAtEnd(6)
 
+	/*ll.delAtEnd()
 	ll.delAtEnd()
 	ll.delAtEnd()
-	ll.delAtEnd()
-
+*/
 	ll.ergodic()
 	log.Println(ll.count())
+
+	ll.reverse();
+	ll.ergodic();
 }
