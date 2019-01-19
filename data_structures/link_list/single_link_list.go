@@ -104,7 +104,7 @@ func (ll *single_link_list) ergodic() {
 	}
 }
 
-func main() {
+/*func main() {
 	// 初始化一个单链表
 	ll := single_link_list{}
 
@@ -124,4 +124,4 @@ func main() {
 
 	ll.reverse();
 	ll.ergodic();
-}
+}*/
