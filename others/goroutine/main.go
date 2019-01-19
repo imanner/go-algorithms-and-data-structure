@@ -17,13 +17,17 @@ func (p people)say() {
 		log.Println("my age is: ", p.age)
 	}
 
-	//nchan <- 1000
+	nchan <- 1000
 }
 
 func main() {
 	me := people{"zhang", "male", 20}
 	go me.say()
-	//me.say()
 
-	<- nchan
+	for {
+		select {
+		case <- nchan:
+			log.Println("输出完毕")
+		}
+	}
 }
